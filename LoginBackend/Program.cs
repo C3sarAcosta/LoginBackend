@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using LoginBackend;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -68,6 +69,18 @@ builder.Services.AddSwaggerGen(c =>
     });
 
 });
+
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
+
+//Ignorar ciclos repetidos
+builder.Services.AddControllers()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler =
+        ReferenceHandler.IgnoreCycles)
+    .AddNewtonsoftJson();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using LoginBackend20243S.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginBackend
@@ -8,6 +9,8 @@ namespace LoginBackend
         public ApplicationDbContext(DbContextOptions options) : base(options) 
         {
         }
-        
+
+        public DbSet<Departamento> Departamentos { get; set; }
+
     }
 }
